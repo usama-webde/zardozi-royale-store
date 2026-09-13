@@ -19,8 +19,8 @@ app.use(cors());
 
 // Server & Database Configuration Constants
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = 'mongodb+srv://usamamalik1475_db_user:m1Eq1OvKKp2eRkQ8@cluster0.ir7zpie.mongodb.net/zardozi_store?retryWrites=true&w=majority';
-const JWT_SECRET = 'zardozi_royal_secret_key_9988';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://usamamalik1475_db_user:m1Eq1OvKKp2eRkQ8@cluster0.ir7zpie.mongodb.net/zardozi_store?retryWrites=true&w=majority';
+const JWT_SECRET = process.env.JWT_SECRET || 'zardozi_royal_secret_key_9988';
 
 
 // ==================== DATABASE MODELS ====================
@@ -333,7 +333,7 @@ mongoose.connect(MONGO_URI)
       console.log('🌱 All 12 Zardozi products seeded successfully into MongoDB!');
     }
 
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 Server running on port ${PORT}`);
     });
   })
